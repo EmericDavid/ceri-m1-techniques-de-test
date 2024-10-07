@@ -31,8 +31,8 @@ public class IPokemonFactoryTest {
     public void testCreatePokemonExemple2() {
         IPokemonFactory factory = Mockito.mock(IPokemonFactory.class);
         Pokemon pokemon = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
-        Mockito.when(factory.createPokemon(133, 2729, 202, 5000, 4)).thenReturn(pokemon);
 
+        Mockito.when(factory.createPokemon(133, 2729, 202, 5000, 4)).thenReturn(pokemon);
         Pokemon result = factory.createPokemon(133, 2729, 202, 5000, 4);
         assertNotNull(result);
         assertEquals(133, result.getIndex());

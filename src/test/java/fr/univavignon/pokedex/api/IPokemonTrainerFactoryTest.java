@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class IPokemonTrainerFactoryTest {
 
@@ -12,14 +13,14 @@ public class IPokemonTrainerFactoryTest {
         IPokemonTrainerFactory factory = Mockito.mock(IPokemonTrainerFactory.class);
         IPokedexFactory pokedexFactory = Mockito.mock(IPokedexFactory.class);
         IPokedex pokedex = Mockito.mock(IPokedex.class);
-
         PokemonTrainer trainer = new PokemonTrainer("Ash", Team.VALOR, pokedex);
-        Mockito.when(factory.createTrainer("Ash", Team.VALOR, pokedexFactory)).thenReturn(trainer);
 
+        Mockito.when(factory.createTrainer("Ash", Team.VALOR, pokedexFactory)).thenReturn(trainer);
         PokemonTrainer result = factory.createTrainer("Ash", Team.VALOR, pokedexFactory);
         assertNotNull(result);
-
-
+        assertEquals("Ash", result.getName());
+        assertEquals(Team.VALOR, result.getTeam());
+        assertEquals(pokedex, result.getPokedex());
     }
 
 }
