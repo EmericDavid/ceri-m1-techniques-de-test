@@ -14,11 +14,11 @@ public class IPokemonTrainerFactoryTest {
         IPokedex pokedex = Mockito.mock(IPokedex.class);
 
         PokemonTrainer trainer = new PokemonTrainer("Ash", Team.VALOR, pokedex);
-
         Mockito.when(factory.createTrainer("Ash", Team.VALOR, pokedexFactory)).thenReturn(trainer);
 
         PokemonTrainer result = factory.createTrainer("Ash", Team.VALOR, pokedexFactory);
         assertNotNull(result);
+
 
     }
 
