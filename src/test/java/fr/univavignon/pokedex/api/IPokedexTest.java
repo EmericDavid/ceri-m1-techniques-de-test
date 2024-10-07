@@ -18,4 +18,3 @@ public class IPokedexTest {
     // Add more test methods as needed
 
 }
-```
