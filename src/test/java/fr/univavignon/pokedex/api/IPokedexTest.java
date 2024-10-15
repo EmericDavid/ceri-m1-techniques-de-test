@@ -43,6 +43,9 @@ public class IPokedexTest {
         Mockito.when(pokedex.addPokemon(bulbasaur)).thenReturn(bulbasaur.getIndex());
         pokedex.addPokemon(bulbasaur);
 
+        Mockito.when(pokedex.size()).thenReturn(1);
+        assertEquals(1, pokedex.size());
+
         Mockito.when(pokedex.addPokemon(aquali)).thenReturn(aquali.getIndex());
         pokedex.addPokemon(aquali);
 
