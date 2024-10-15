@@ -1,5 +1,10 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
+Nom : Emeric DAVID
+Groupe : M1 IA - Classique
+Bagde CircleCI : [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Merecy/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Merecy/ceri-m1-techniques-de-test/tree/master)
+Bagde Codecov : [![codecov](https://codecov.io/github/Merecy/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/github/Merecy/ceri-m1-techniques-de-test)
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
