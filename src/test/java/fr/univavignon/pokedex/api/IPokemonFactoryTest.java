@@ -25,6 +25,7 @@ public class IPokemonFactoryTest {
         assertEquals(64, result.getHp());
         assertEquals(4000, result.getDust());
         assertEquals(4, result.getCandy());
+        assertEquals(56, result.getIv(), 0.0);
     }
 
     @Test
@@ -44,6 +45,7 @@ public class IPokemonFactoryTest {
         assertEquals(202, result.getHp());
         assertEquals(5000, result.getDust());
         assertEquals(4, result.getCandy());
+        assertEquals(100, result.getIv(), 0.0);
     }
 
 }
