@@ -14,12 +14,12 @@ public enum PokemonComparators implements Comparator<Pokemon> {
 
 	/** Comparator using Pokemon index. **/
 	INDEX(Comparator.comparing(Pokemon::getIndex)),
-	
+
 	/** Comparator using Pokemon combat point. **/
 	CP(Comparator.comparing(Pokemon::getCp))
-	
+
 	;
-	
+
 	/** Delegate comparator instance. **/
 	private final Comparator<Pokemon> delegate;
 
@@ -35,7 +35,7 @@ public enum PokemonComparators implements Comparator<Pokemon> {
 	/** {@inheritDoc} **/
 	@Override
 	public int compare(final Pokemon first, final Pokemon second) {
-		
+
 		return delegate.compare(first, second);
 	}
 
