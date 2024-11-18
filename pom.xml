@@ -12,6 +12,11 @@
     <description>API for Pokedex application</description>
     <url>http://www.univ-avignon.fr</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -97,6 +102,7 @@
                 <version>3.3.0</version>
                 <configuration>
                     <source>17</source>
+                    <additionalOptions>--html5</additionalOptions>
                 </configuration>
             </plugin>
 
