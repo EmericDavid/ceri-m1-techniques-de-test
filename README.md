@@ -3,9 +3,9 @@
 Nom : Emeric DAVID
 Groupe : M1 IA - Classique
 
-Bagde CircleCI : [![CircleCI](https://dl.circleci.com/status-badge/img/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master)
+CircleCI : [![CircleCI](https://dl.circleci.com/status-badge/img/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master)
 
-Bagde Codecov : [![codecov](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test)
+Codecov : [![codecov](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test)
 
 Checkstyle: [![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)](https://github.com/EmericDavid/ceri-m1-techniques-de-test)
 
