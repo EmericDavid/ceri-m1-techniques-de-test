@@ -35,8 +35,18 @@ jobs:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
       - run:
-          name: Deploy Javadoc
-          command: mvn javadoc:deploy
+          name: Move Javadoc to root/docs/
+          command: |
+            mkdir -p docs
+            mv target/site/apidocs/* docs/
+      - run:
+          name: Commit and Push Javadoc
+          command: |
+            git config --global user.email ""
+            git config --global user.name "Documentation Bot"
+            git add doc
+            git commit -m "Update Javadoc"
+            git push origin $(git rev-parse --abbrev-ref HEAD)
 
 workflows:
   sample:
