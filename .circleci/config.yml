@@ -29,35 +29,38 @@ jobs:
           command: mvn checkstyle:check
 
   documentation:
-    docker:
-      - image: cimg/openjdk:17.0
+  docker:
+    - image: cimg/openjdk:17.0
 
-    steps:
-      - checkout
-      - run:
-          name: Generate Javadoc
-          command: mvn javadoc:javadoc
-      - run:
-          name: Publish Documentation to documentation Branch
-          command: |
-            git config user.name "DocumentationBot"
-            git config user.email "doc@example.com"
-            
-            # Check if the documentation branch exists
-            if git show-ref --quiet refs/heads/documentation; then
-              git checkout documentation
-            else
-              git checkout -b documentation
-            fi
-            
-            # Copy Javadoc files to docs directory
-            mkdir -p docs
-            cp -r target/site/apidocs/* docs/
-            
-            # Commit and push changes
-            git add docs
-            git commit -m "Update Javadoc documentation [skip ci]"
-            git push origin documentation --force
+  steps:
+    - checkout
+    - run:
+        name: Generate Javadoc
+        command: mvn javadoc:javadoc
+    - run:
+        name: Publish Documentation to documentation Branch
+        command: |
+          git config user.name "DocumentationBot"
+          git config user.email "doc@example.com"
+
+          # Check if the documentation branch exists
+          if git show-ref --quiet refs/heads/documentation; then
+            git checkout documentation
+          else
+            git checkout -b documentation
+          fi
+
+          # Remove old docs content if exists
+          rm -rf docs/*
+
+          # Copy the new Javadoc files to docs directory
+          mkdir -p docs
+          cp -r target/site/apidocs/* docs/
+
+          # Commit and push changes
+          git add docs
+          git commit -m "Update Javadoc documentation [skip ci]"
+          git push origin documentation --force
 
 workflows:
   sample:
