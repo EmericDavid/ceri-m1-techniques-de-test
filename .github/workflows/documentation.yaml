@@ -1,12 +1,13 @@
 name: Documentation
 
-permissions:
-  contents: write
-
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
