@@ -7,6 +7,9 @@ Bagde CircleCI : [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Emeric
 
 Bagde Codecov : [![codecov](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test)
 
+Checkstyle: [![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)](https://github.com/EmericDavid/ceri-m1-techniques-de-test)
+
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  

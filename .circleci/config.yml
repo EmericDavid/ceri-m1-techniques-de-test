@@ -24,7 +24,11 @@ jobs:
           command: mvn jacoco:report  # Assuming you're using Jacoco for code coverage
       - codecov/upload:
           file: target/site/jacoco/jacoco.xml  # Specify the path to the coverage report
-
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:check
+      
+      
 # Orchestrate jobs using workflows
 workflows:
   sample:
