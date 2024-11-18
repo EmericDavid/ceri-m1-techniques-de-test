@@ -44,7 +44,7 @@ jobs:
           command: |
             git config --global user.email ""
             git config --global user.name "Documentation Bot"
-            git add doc
+            git add docs
             git commit -m "Update Javadoc"
             git push origin $(git rev-parse --abbrev-ref HEAD)
 
