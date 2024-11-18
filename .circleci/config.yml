@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   codecov: codecov/codecov@4.0.1
-  
+
 jobs:
   build-and-test:
     docker:
@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: Build
-          command: mvn -B -DskipTests clean package javadoc:javadoc
+          command: mvn -B -DskipTests clean package
       - run:
           name: Test
           command: mvn test
@@ -25,14 +25,23 @@ jobs:
           name: Run Checkstyle
           command: mvn checkstyle:check
 
+  documentation:
+    docker:
+      - image: cimg/openjdk:17.0
+
+    steps:
+      - checkout
       - run:
-        name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/site/apidocs 
+          name: Generate Javadoc
+          command: mvn javadoc:javadoc
+      - run:
+          name: Deploy Javadoc
+          command: mvn javadoc:deploy
 
 workflows:
   sample:
     jobs:
       - build-and-test
+      - documentation:
+          requires:
+            - build-and-test
