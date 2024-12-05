@@ -9,6 +9,7 @@ import fr.univavignon.pokedex.api.PokemonMetadata;
 public class PokemonFactory implements IPokemonFactory {
 
     private final IPokemonMetadataProvider metadataProvider;
+    private static final double DEFAULT_IV = 100.0;
 
     public PokemonFactory(IPokemonMetadataProvider metadataProvider) {
         this.metadataProvider = metadataProvider;
@@ -19,7 +20,7 @@ public class PokemonFactory implements IPokemonFactory {
         try {
             PokemonMetadata metadata = metadataProvider.getPokemonMetadata(index);
             return new Pokemon(index, metadata.getName(), metadata.getAttack(), metadata.getDefense(),
-                    metadata.getStamina(), cp, hp, dust, candy, 100.0);
+                    metadata.getStamina(), cp, hp, dust, candy, DEFAULT_IV);
         } catch (PokedexException e) {
             throw new RuntimeException("Failed to create Pokemon", e);
         }
