@@ -1,53 +1,52 @@
 package fr.univavignon.pokedex.imp;
 
+import fr.univavignon.pokedex.api.IPokemonFactory;
 import fr.univavignon.pokedex.api.PokedexException;
 import fr.univavignon.pokedex.api.Pokemon;
-import fr.univavignon.pokedex.api.PokemonMetadata;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.*;
 
 public class RocketPokemonFactoryTest {
 
-    @Test
-    public void testCreatePokemon() {
-        PokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
-        PokemonFactory factory = new PokemonFactory(metadataProvider);
+    private IPokemonFactory pokemonFactory;
 
-        Pokemon pokemon = factory.createPokemon(0, 613, 64, 4000, 4);
-
-        assertNotNull(pokemon);
-        assertEquals(0, pokemon.getIndex());
-        assertEquals("Bulbasaur", pokemon.getName());
-        assertEquals(126, pokemon.getAttack());
-        assertEquals(126, pokemon.getDefense());
-        assertEquals(90, pokemon.getStamina());
-        assertEquals(613, pokemon.getCp());
-        assertEquals(64, pokemon.getHp());
-        assertEquals(4000, pokemon.getDust());
-        assertEquals(4, pokemon.getCandy());
-        assertEquals(100.0, pokemon.getIv(), 0.0);
+    @Before
+    public void setUp() {
+        pokemonFactory = new RocketPokemonFactory();
     }
 
     @Test
-    public void testCreatePokemonWithInvalidIndex() {
-        PokemonMetadataProvider metadataProvider = new PokemonMetadataProvider() {
-            @Override
-            public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-                throw new PokedexException("Invalid Pokemon index: " + index);
-            }
-        };
-        PokemonFactory factory = new PokemonFactory(metadataProvider);
+    public void testCreatePokemonWithValidIndex() throws PokedexException {
+        int index = 1; // Bulbasaur
+        Pokemon pokemon = pokemonFactory.createPokemon(index, 500, 50, 3000, 3);
+        assertNotNull("Le Pokémon ne doit pas être null", pokemon);
+        assertEquals("Le nom du Pokémon doit être Bulbasaur", "Bulbasaur", pokemon.getName());
+        assertTrue("L'attaque doit être générée aléatoirement et positive", pokemon.getAttack() > 0);
+        assertTrue("La défense doit être générée aléatoirement et positive", pokemon.getDefense() > 0);
+        assertTrue("L'endurance doit être générée aléatoirement et positive", pokemon.getStamina() > 0);
+        assertEquals("IV doit être 1", 1, pokemon.getIv(), 0);
+    }
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            factory.createPokemon(-1, 613, 64, 4000, 4);
-        });
+    @Test
+    public void testCreatePokemonWithInvalidIndex() throws PokedexException {
+        int index = -2; // INVALID
+        Pokemon pokemon = pokemonFactory.createPokemon(index, 500, 50, 3000, 3);
+        assertNotNull("Le Pokémon ne doit pas être null", pokemon);
+        assertEquals("Le nom du Pokémon doit être MISSINGNO pour un index invalide", "MISSINGNO", pokemon.getName());
+    }
 
-        assertEquals("Failed to create Pokemon", exception.getMessage());
-        assertNotNull(exception.getCause());
-        assertEquals(PokedexException.class, exception.getCause().getClass());
-        assertEquals("Invalid Pokemon index: -1", exception.getCause().getMessage());
+    @Test
+    public void testCreatePokemonWithSpecialIndex() throws PokedexException {
+        int index = -1; // Ash's Pikachu
+        Pokemon pokemon = pokemonFactory.createPokemon(index, 500, 50, 3000, 3);
+        assertNotNull("Le Pokémon ne doit pas être null", pokemon);
+        assertEquals("Le nom du Pokémon doit être Ash's Pikachu pour l'index spécial -1", "Ash's Pikachu",
+                pokemon.getName());
+        assertEquals("L'attaque pour Ash's Pikachu doit être 1000", 1000, pokemon.getAttack());
+        assertEquals("La défense pour Ash's Pikachu doit être 1000", 1000, pokemon.getDefense());
+        assertEquals("L'endurance pour Ash's Pikachu doit être 1000", 1000, pokemon.getStamina());
+        assertEquals("IV pour Ash's Pikachu doit être 0", 0, pokemon.getIv(), 0);
     }
 }
