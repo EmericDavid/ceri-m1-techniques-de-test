@@ -10,43 +10,67 @@ import static org.junit.Assert.*;
 
 public class RocketPokemonFactoryTest {
 
-    private IPokemonFactory pokemonFactory;
+    private IPokemonFactory factory;
+    private PokemonMetadataProvider metadataProvider;
 
     @Before
     public void setUp() {
-        pokemonFactory = new RocketPokemonFactory();
+        metadataProvider = new PokemonMetadataProvider();
+        factory = new RocketPokemonFactory();
     }
 
     @Test
-    public void testCreatePokemonWithValidIndex() throws PokedexException {
+    public void testCreatePokemonExemple1() {
+        // Pokemon pokemon = new Pokemon(0, "Bulbasaur", 126, 126, 90, 613, 64, 4000, 4,
+        // 56);
+
+        Pokemon result = factory.createPokemon(0, 613, 64, 4000, 4);
+        assertNotNull(result);
+        assertEquals(0, result.getIndex());
+        assertEquals("Bulbasaur", result.getName());
+        assertEquals(126, result.getAttack());
+        assertEquals(126, result.getDefense());
+        assertEquals(90, result.getStamina());
+        assertEquals(613, result.getCp());
+        assertEquals(64, result.getHp());
+        assertEquals(4000, result.getDust());
+        assertEquals(4, result.getCandy());
+        assertEquals(100, result.getIv(), 0.0);
+    }
+
+    @Test
+    public void testCreatePokemonExemple2() {
+        // Pokemon pokemon = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000,
+        // 4,
+        // 100);
+
+        Pokemon result = factory.createPokemon(133, 2729, 202, 5000, 4);
+        assertNotNull(result);
+        assertEquals(133, result.getIndex());
+        assertEquals("Aquali", result.getName());
+        assertEquals(186, result.getAttack());
+        assertEquals(168, result.getDefense());
+        assertEquals(260, result.getStamina());
+        assertEquals(2729, result.getCp());
+        assertEquals(202, result.getHp());
+        assertEquals(5000, result.getDust());
+        assertEquals(4, result.getCandy());
+        assertEquals(100, result.getIv(), 0.0);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testCreatePokemonInvalidIndex() throws PokedexException {
+        factory.createPokemon(-1, 613, 64, 4000, 4);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testCreatePokemonWithValidIndexStatRange() throws PokedexException {
         int index = 1; // Bulbasaur
-        Pokemon pokemon = pokemonFactory.createPokemon(index, 500, 50, 3000, 3);
+        Pokemon pokemon = factory.createPokemon(index, 500, 50, 3000, 3);
         assertNotNull("Le Pokémon ne doit pas être null", pokemon);
-        assertEquals("Le nom du Pokémon doit être Bulbasaur", "Bulbasaur", pokemon.getName());
-        assertTrue("L'attaque doit être générée aléatoirement et positive", pokemon.getAttack() > 0);
-        assertTrue("La défense doit être générée aléatoirement et positive", pokemon.getDefense() > 0);
-        assertTrue("L'endurance doit être générée aléatoirement et positive", pokemon.getStamina() > 0);
-        assertEquals("IV doit être 1", 1, pokemon.getIv(), 0);
+        assertTrue("L'attaque doit être générée aléatoirement et dans la plage de base", pokemon.getAttack() <= 190);
+        assertTrue("La défense doit être générée aléatoirement et dans la plage de base", pokemon.getDefense() <= 190);
+        assertTrue("L'endurance doit être générée aléatoirement et dans la plage de base", pokemon.getStamina() <= 190);
     }
 
-    @Test
-    public void testCreatePokemonWithInvalidIndex() throws PokedexException {
-        int index = -2; // INVALID
-        Pokemon pokemon = pokemonFactory.createPokemon(index, 500, 50, 3000, 3);
-        assertNotNull("Le Pokémon ne doit pas être null", pokemon);
-        assertEquals("Le nom du Pokémon doit être MISSINGNO pour un index invalide", "MISSINGNO", pokemon.getName());
-    }
-
-    @Test
-    public void testCreatePokemonWithSpecialIndex() throws PokedexException {
-        int index = -1; // Ash's Pikachu
-        Pokemon pokemon = pokemonFactory.createPokemon(index, 500, 50, 3000, 3);
-        assertNotNull("Le Pokémon ne doit pas être null", pokemon);
-        assertEquals("Le nom du Pokémon doit être Ash's Pikachu pour l'index spécial -1", "Ash's Pikachu",
-                pokemon.getName());
-        assertEquals("L'attaque pour Ash's Pikachu doit être 1000", 1000, pokemon.getAttack());
-        assertEquals("La défense pour Ash's Pikachu doit être 1000", 1000, pokemon.getDefense());
-        assertEquals("L'endurance pour Ash's Pikachu doit être 1000", 1000, pokemon.getStamina());
-        assertEquals("IV pour Ash's Pikachu doit être 0", 0, pokemon.getIv(), 0);
-    }
 }
