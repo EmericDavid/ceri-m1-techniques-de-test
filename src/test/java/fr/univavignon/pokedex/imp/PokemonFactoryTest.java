@@ -1,10 +1,14 @@
 package fr.univavignon.pokedex.imp;
 
+import fr.univavignon.pokedex.api.IPokemonMetadataProvider;
+import fr.univavignon.pokedex.api.PokedexException;
 import fr.univavignon.pokedex.api.Pokemon;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PokemonFactoryTest {
     @Test
@@ -49,5 +53,13 @@ public class PokemonFactoryTest {
         assertEquals(5000, result.getDust());
         assertEquals(4, result.getCandy());
         assertEquals(100, result.getIv(), 0.0);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testCreatePokemonInvalidIndex() throws PokedexException {
+        PokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
+        PokemonFactory factory = new PokemonFactory(metadataProvider);
+
+        factory.createPokemon(-1, 613, 64, 4000, 4);
     }
 }
