@@ -7,7 +7,7 @@ CircleCI : [![CircleCI](https://dl.circleci.com/status-badge/img/gh/EmericDavid/
 
 Codecov : [![codecov](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test)
 
-Checkstyle: [![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)]
+Checkstyle: [![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)
 
 Documentation : [![Website](https://img.shields.io/website?url=https%3A%2F%2FEmericDavid.github.io%2Fceri-m1-techniques-de-test%2F)](https://emericdavid.github.io/ceri-m1-techniques-de-test/)
 
