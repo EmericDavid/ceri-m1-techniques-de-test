@@ -1,16 +1,23 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
+---
+
 Nom : Emeric DAVID
 Groupe : M1 IA - Classique
 
-CircleCI : [![CircleCI](https://dl.circleci.com/status-badge/img/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master)
+---
 
-Codecov : [![codecov](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test)
+| Service  |  Badge |
+|----------|--------|
+| CircleCI      | [![CircleCI](https://dl.circleci.com/status-badge/img/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/EmericDavid/ceri-m1-techniques-de-test/tree/master) |
+| Codecov       | [![codecov](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test/graph/badge.svg?token=YH49BOEFAO)](https://codecov.io/gh/EmericDavid/ceri-m1-techniques-de-test) |
+| Checkstyle    | [![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)](https://img.shields.io/badge/Checkstyle-passing-brightgreen) |
+| Documentation | [![Website](https://img.shields.io/website?url=https%3A%2F%2FEmericDavid.github.io%2Fceri-m1-techniques-de-test%2F)](https://emericdavid.github.io/ceri-m1-techniques-de-test/) |
 
-Checkstyle: [![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)
 
-Documentation : [![Website](https://img.shields.io/website?url=https%3A%2F%2FEmericDavid.github.io%2Fceri-m1-techniques-de-test%2F)](https://emericdavid.github.io/ceri-m1-techniques-de-test/)
+Compte rendu TP6 Team Rocket cliquer [ici](./Rapport_TP6/Compte_rendu_TeamRocket.md)
 
+---
 
 ## Introduction
 
